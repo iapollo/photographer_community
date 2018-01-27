@@ -4,12 +4,39 @@ const app = getApp()
 
 Page({
   data: {
+    //navbar数据
+    tabs:['首页', '文章列表', '论坛'],
+    //轮播图
+    imgUrls:[
+      {url:'../../images/1.jpg'},
+      {url:'../../images/2.jpg'},
+      {url:'../../images/3.jpg'}
+    ],
+    indicatorDot:false,
+    autoplay:true,
+    interval:5000,
+    duration:1000,
+    //文章列表数据
+    articleList:[
+      { id: 1, title: "标题一", time: "2017-3-5 23:01:59", src: "../../images/1.jpg"},
+      { id: 2, title: "标题二", time: "2017-3-6 23:01:59", src: "../../images/2.jpg" },
+      { id: 3, title: "标题三", time: "2017-3-7 23:01:59", src: "../../images/3.jpg" }
+    ],
+    imgWidth: wx.getSystemInfoSync().windowWidth,
     motto: 'Hello World',
     userInfo: {},
     hasUserInfo: false,
     canIUse: wx.canIUse('button.open-type.getUserInfo')
   },
+
+
   //事件处理函数
+  tabClick: function (e) {
+    this.setData({
+      sliderOffset: e.currentTarget.offsetLeft,
+      activeIndex: e.currentTarget.id
+    });
+  },
   bindViewTap: function() {
     wx.navigateTo({
       url: '../logs/logs'

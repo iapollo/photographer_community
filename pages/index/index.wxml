@@ -1,13 +1,90 @@
 <!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
+<view class="page">
+  <!-- <view class='page__hd'>
+    <text>标题</text>
+  </view> --> 
+  <view class='page__bd'>
+    <view class='weui-tab'>
+      <view class="weui-navbar">
+        <block wx:for="{{tabs}}" wx:key="*this">
+          <view id="{{index}}" class="weui-navbar__item {{activeIndex == index ? 'weui-bar__item_on' : ''}}" bindtap="tabClick">
+            <view class="weui-navbar__title">{{item}}</view>
+          </view>
+        </block>
+        <view class="weui-navbar__slider" style="left: {{sliderLeft}}px; transform: translateX({{sliderOffset}}px); -webkit-transform: translateX({{sliderOffset}}px);"></view>
+      </view>
+      <view class="weui-tab__panel">
+        <view class="weui-tab__content" hidden="{{activeIndex != 0}}">
+          <swiper class="swiper" indicator-dots="{{indicatorDot}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">    
+            <block wx:for="{{imgUrls}}" wx:key="url">    
+              <swiper-item>    
+                <image src="{{item.url}}" style="width:{{imgWidth}}px;" mode="aspectFill"/>    
+              </swiper-item>    
+            </block>    
+          </swiper>
+          <view class="weui-search-bar">  
+            <view class="weui-search-bar__form">  
+              <view class="weui-search-bar__box">  
+                <icon class="weui-icon-search_in-box" type="search" size="14"></icon>  
+                <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" bindtap="searchLogShowed"/>  
+                <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">  
+                    <icon type="clear" size="14"></icon>  
+                </view>  
+              </view>  
+              <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">  
+                <icon class="weui-icon-search" type="search" size="14"></icon>  
+                <view class="weui-search-bar__text">搜索</view>  
+              </label>  
+            </view>  
+            <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="searchData">搜索</view>  
+          </view>  
+          <view wx:if="{{searchLogShowed}}">  
+            <view  class="search-log" wx:for-item="searchLog" wx:for="{{searchLogList}}"  wx:key="searchLogListId" bindtap="searchDataByLog" data-log="{{searchLog}}">  
+                {{searchLog}}   
+            </view>  
+            <view class="clear-search-log" bindtap="clearSearchLog">清除搜索记录</view>  
+          </view>  
+        </view>
+        <view class="weui-tab__content" hidden="{{activeIndex != 1}}">
+          <view wx:for="{{articleList}}" wx:key="{{item.id}}">
+            <view class="kind-list__item">
+              <!--用is 使用模版-->  
+              <template is="article" data="{{...item}}"></template>
+            </view>
+          </view>
+        </view>
+        <view class="weui-tab__content" hidden="{{activeIndex != 2}}">选项三的内容</view> 
+      </view>
+    </view>
+  </view>
+
+  <template name="article">
+    <view class="weui-panel__bd">  
+      <navigator url="../detail/detail?id={{id}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">  
+        <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">  
+          <image class="weui-media-box__thumb" src="{{src}}" style="width: 60px; height: 60px;"/>  
+        </view>  
+        <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">  
+          <view class="weui-media-box__title">{{title}}</view>  
+          <view class="weui-media-box__desc">{{time}}</view>  
+        </view>  
+      </navigator>  
+    </view>  
+  </template>
+  <!-- <view class="userinfo">
     <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
     <block wx:else>
       <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
       <text class="userinfo-nickname">{{userInfo.nickName}}</text>
     </block>
-  </view>
+  </view> -->
   <view class="usermotto">
     <text class="user-motto">{{motto}}</text>
+  </view>
+  <view class="weui-footer weui-footer_fixed-bottom">
+    <!-- <view class="weui-footer__links">
+      <navigator url="" class="weui-footer__link">首页</navigator>
+    </view> -->
+    <view class="weui-footer__text">© Copyright 2016 | BigDay·禧程 All rights reserved | 粤ICP备15081854号</view>
   </view>
 </view>

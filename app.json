@@ -5,8 +5,30 @@
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
-  }
+    "navigationBarBackgroundColor": "#268dcd",
+    "navigationBarTitleText": "禧程",
+    "navigationBarTextStyle":"white",
+    "enablePullDownRefresh": true
+  },
+  "tabBar": {
+    "color": "#666",
+    "selectedColor": "#268dcd",
+    "borderStyle": "white",
+    "backgroundColor": "#fafafa",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/coming.png",
+        "selectedIconPath": "images/coming-active.png",
+        "text": "发现音乐"
+      },
+      {
+        "pagePath": "pages/logs/logs",
+        "iconPath": "images/ing.png",
+        "selectedIconPath": "images/ing-active.png",
+        "text": "私人Fm"
+      }
+    ]
+  },
+  "debug": true
 }
