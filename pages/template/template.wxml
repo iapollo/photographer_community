@@ -1,0 +1,51 @@
+<view class="page">
+  <view class='page__bd'>
+    <template name="article">
+      <view class="weui-panel__bd">  
+        <navigator url="../detail/detail?id={{id}}" class="weui-media-box weui-media-box_appmsg" hover-class="weui-cell_active">  
+          <view class="weui-media-box__hd weui-media-box__hd_in-appmsg">  
+            <image class="weui-media-box__thumb" src="{{src}}" style="width: 60px; height: 60px;"/>  
+          </view>  
+          <view class="weui-media-box__bd weui-media-box__bd_in-appmsg">  
+            <view class="weui-media-box__title">{{title}}</view>  
+            <view class="weui-media-box__desc">{{time}}</view>  
+          </view>  
+        </navigator>  
+      </view>  
+    </template>
+  </view>
+</view>
+
+<template name="courseLeft">
+    <navigator url="../play/play?courseUuid={{courseUuid}}&isCompany={{isCompany}}">
+        <view class="item mr26">
+            <image src="{{imagePath}}" mode="aspectFill"></image>
+            <view class="course-title">
+                <text class="title">{{courseName}}</text>
+                <text class="author">- {{teacherName}}</text>
+            </view>
+            <view class="course-info clearfix">
+                <view class="fl"><text class="play">{{playCount}}</text></view>
+                <view class="fr"><text class="grade">{{score}}</text></view>
+            </view>
+            <view wx:if="{{studyProgress}}" class="tip-completed">{{studyProgress}}</view>
+        </view>
+    </navigator>
+</template>
+
+<template name="courseRight">
+    <navigator url="../play/play?courseUuid={{courseUuid}}&isCompany={{isCompany}}">
+        <view class="item">
+            <image src="{{imagePath}}" mode="aspectFill"></image>
+            <view class="course-title">
+                <text class="title">{{courseName}}</text>
+                <text class="author">- {{teacherName}}</text>
+            </view>
+            <view class="course-info clearfix">
+                <text class="play fl">{{playCount}}</text>
+                <text class="grade fr">{{score}}</text>
+            </view>
+            <view wx:if="{{studyProgress}}" class="tip-completed">{{studyProgress}}</view>
+        </view>
+    </navigator>
+</template>

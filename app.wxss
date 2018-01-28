@@ -1,6 +1,5 @@
 /**app.wxss**/
 @import 'weui.wxss';
-
 .container {
   height: 100%;
   display: flex;
@@ -10,3 +9,87 @@
   padding: 200rpx 0;
   box-sizing: border-box;
 } 
+
+
+/*---start of common wxss---*/
+.textC, .boxC, .imageC, .iconC, .wrapperC{
+	position: absolute;
+	top: 0;
+	left: 0;
+	word-break: break-all;
+	text-align: center;
+	display: flex;
+	align-items:center;
+	box-sizing:border-box;
+	transform-origin: 0% 0%;
+	-webkit-transform-origin: 0% 0%;
+    -webkit-font-smoothing: antialiased;
+}
+
+.imageC{
+    overflow: hidden;
+}
+
+.imageC image{
+    position: absolute;
+    left: 0;
+    top: 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+	z-index: -1;
+}
+
+.textC{
+	overflow: hidden;
+}
+
+.text-content{
+	width: 100%;
+}
+
+.textC.tB{
+	font-weight: bold;
+}
+
+.textC.hL{
+	text-align: left;
+}
+
+.textC.hL{
+	text-align: right;
+}
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src:
+       url('https://img.xiaopiu.com/font/MaterialIcons-Regular.woff2') format('woff2'),
+       url('https://img.xiaopiu.com/font/MaterialIcons-Regular.woff') format('woff');
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+/*---end of common wxss---*/

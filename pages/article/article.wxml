@@ -1,0 +1,14 @@
+<!--article-->
+<import src='../template/template.wxml'/>
+<view class="page">
+  <view class='page__bd'>
+    <view wx:for="{{articleList}}" wx:key="{{item.id}}">
+      <view class="kind-list__item">
+        <navigator url='{{item.url}}'>
+          <!--用is 使用模版-->  
+          <template is="article" data="{{...item}}"></template>
+        </navigator>
+      </view>
+    </view>
+  </view>
+</view>

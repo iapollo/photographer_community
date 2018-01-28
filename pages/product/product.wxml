@@ -1,0 +1,12 @@
+<!--product.wxml-->
+<import src='../template/template.wxml'/>
+
+<view class="page">
+  <view class='page__bd'>
+    <view>
+      <block wx:for="{{productionList}}">
+        <template is="{{index%2 === 0 ? 'courseLeft' : 'courseRight'}}" data="{{...item}}"></template>
+      </block>
+    </view>
+  </view>
+</view>
