@@ -14,6 +14,39 @@ const formatNumber = n => {
   return n[1] ? n : '0' + n
 }
 
-module.exports = {
-  formatTime: formatTime
+
+/**
+* 从一个数组中随机取出若干个元素组成数组
+* @param {Array} arr 原数组
+* @param {Number} count 需要随机取得个数
+**/
+const getRandomArray = (arr, count) => {
+  var shuffled = arr.slice(0),
+    i = arr.length,
+    min = i - count,
+    temp,
+    index;
+  while (i-- > min) {
+    index = Math.floor((i + 1) * Math.random());
+    temp = shuffled[index];
+    shuffled[index] = shuffled[i];
+    shuffled[i] = temp;
+  }
+  return shuffled.slice(min);
 }
+
+/**
+* 从一个数组中随机取出一个元素
+* @param {Array} arr 原数组
+**/
+const getRandomArrayElement = arr => {
+  return arr[Math.floor(Math.random() * arr.length)];
+}
+
+
+module.exports = {
+  formatTime: formatTime,
+  getRandomArray: getRandomArray,
+  getRandomArrayElement: getRandomArrayElement,
+}
+

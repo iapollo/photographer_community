@@ -4,8 +4,7 @@
     "pages/index/index",
     "pages/article/article",
     "pages/product/product",
-    "pages/demo/demo",
-    "pages/demo1/demo1"
+    "pages/conference/conference"
   ],
   "window":{
     "backgroundTextStyle":"light",
