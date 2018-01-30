@@ -4,6 +4,7 @@
     "pages/index/index",
     "pages/article/article",
     "pages/product/product",
+    "pages/photographer/photographer",
     "pages/conference/conference"
   ],
   "window":{
