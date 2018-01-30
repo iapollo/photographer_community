@@ -1,58 +1,75 @@
 <!--index.wxml-->
-<import src='../template/template.wxml'/>
+<import src='../template/template.wxml' />
 
 <view class="page">
   <view class='page__bd'>
-<!--swiper-->
-  <swiper class="swiper" indicator-dots="{{indicatorDot}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">    
-    <block wx:for="{{imgUrls}}" wx:key="url">    
-      <swiper-item>    
-        <image src="{{item.url}}" style="width:{{imgWidth}}px;" mode="aspectFill"/>    
-      </swiper-item>    
-    </block>    
-  </swiper>
-<!--grids-->
-  <view class="weui-grids">
-    <block wx:for="{{grids}}" wx:key="name">
-      <navigator url="../{{item.url}}/{{item.url}}" class="weui-grid" hover-class="weui-grid_active">
-        <view>
-          <image class="weui-grid__icon" src='{{item.icon}}' mode="scaleToFill"></image>
-        </view> 
-        <view class="weui-grid__label">{{item.text}}</view>
-      </navigator>
-    </block>
-  </view>
-<!--search-bar-->
-  <view class="weui-search-bar">  
-    <view class="weui-search-bar__form">  
-      <view class="weui-search-bar__box">  
-        <icon class="weui-icon-search_in-box" type="search" size="14"></icon>  
-        <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" bindtap="searchLogShowed"/>  
-        <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">  
-            <icon type="clear" size="14"></icon>  
-        </view>  
-      </view>  
-      <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">  
-        <icon class="weui-icon-search" type="search" size="14"></icon>  
-        <view class="weui-search-bar__text">搜索城市</view>  
-      </label>  
-    </view>  
-    <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="searchData">搜索</view>  
-  </view>  
-<!--picker-->
-  <view class="section">
-    <view class="section__title">请选择城市</view>
-    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
-      <view class="picker">
-        当前选择：{{array[index]}}
+    <!--swiper-->
+    <swiper class="swiper" indicator-dots="{{indicatorDot}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
+      <block wx:for="{{imgUrls}}" wx:key="url">
+        <swiper-item>
+          <image src="{{item.url}}" style="width:{{imgWidth}}px;" mode="aspectFill" />
+        </swiper-item>
+      </block>
+    </swiper>
+    <!--grids-->
+    <view class="weui-grids">
+      <block wx:for="{{grids}}" wx:key="name">
+        <navigator url="../{{item.url}}/{{item.url}}" class="weui-grid" hover-class="weui-grid_active">
+          <view>
+            <image class="weui-grid__icon" src='{{item.icon}}' mode="scaleToFill"></image>
+          </view>
+          <view class="weui-grid__label">{{item.text}}</view>
+        </navigator>
+      </block>
+    </view>
+
+    <!--search-bar-->
+    <!-- <view class="weui-search-bar">
+      <view class="weui-search-bar__form">
+        <view class="weui-search-bar__box">
+          <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+          <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" bindtap="searchLogShowed" />
+          <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+            <icon type="clear" size="14"></icon>
+          </view>
+        </view>
+        <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+          <icon class="weui-icon-search" type="search" size="14"></icon>
+          <view class="weui-search-bar__text">搜索城市</view>
+        </label>
       </view>
-    </picker>
-  </view>
+      <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="searchData">搜索</view>
+    </view> -->
+    <!--picker-->
+    <!-- <view class="section">
+      <view class="section__title">请选择城市</view>
+      <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
+        <view class="picker">
+          当前选择：{{array[index]}}
+        </view>
+      </picker>
+    </view> -->
 
+    <!--瀑布流-->
+    <view class="WxMasonryTitle">推荐城市</view>
+    <view class="hot-box-main WxMasonryView">
+      <block wx:for="{{datalist}}" wx:for-item="item" wx:for-index="i" wx:key="">
+        <view class="hot-box-top">
+          <text class="hot-box-title">{{datalist[i].dateDay}}</text>
+        </view>
+        <view class="WxMasonry" wx:for="{{datalist[i].stories}}" wx:for-index="j" wx:for-item="items" wx:key="">
+          <!-- <navigator id="{{datalist[i].stories[j].id}}" url="../detail/detail?id={{datalist[i].stories[j].id}}"> -->
+          <navigator id='{{datalist[i].stories[j].id}}' url='../photographer/photographer'>
+            <image class="WxMasonryImage" id="{{i*10+j}}" style="width:{{imagesHeightList[i*10+j].width}}px;height:{{imagesHeightList[i*10+j].height}}px" mode="aspectFill" bindload="WxMasonryImageLoad" src="{{datalist[i].stories[j].images[0]}}" />
+            <view class="list-box-title">{{datalist[i].stories[j].title}}</view>
+          </navigator>
+        </view>
+      </block>
+    </view>
 
-<!--footer-->
-  <view class="weui-footer weui-footer_fixed-bottom">
-    <view class="weui-footer__text">© Copyright 2016 | BigDay·禧程 All rights reserved | 粤ICP备15081854号</view>
+    <!--footer-->
+    <view class="weui-footer ">
+      <view class="weui-footer__text">© Copyright 2016 | BigDay·禧程 All rights reserved | 粤ICP备15081854号</view>
+    </view>
   </view>
-</view>
 </view>

@@ -1,5 +1,6 @@
 //home.js
 //获取应用实例
+const util = require('../../utils/util.js');
 const app = getApp()
 
 Page({
@@ -10,7 +11,7 @@ Page({
       { url: '../../images/2.jpg' },
       { url: '../../images/3.jpg' }
     ],
-    indicatorDot: false,
+    indicatorDot: true,
     autoplay: true,
     interval: 5000,
     duration: 1000,
@@ -42,19 +43,16 @@ Page({
         name: '俄罗斯'
       }
     ],
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo')
+    //瀑布流
+    datalist: [],
+    dataListDateCurrent: 20180106,      // 当前日期current
+    dataListDateCount: 0,
+    imagesHeightList: []
   },
 
 
   //事件处理函数
-  tabClick: function (e) {
-    this.setData({
-      sliderOffset: e.currentTarget.offsetLeft,
-      activeIndex: e.currentTarget.id
-    });
-  },
+  //picker
   bindPickerChange: function (e) {
     console.log('picker发送选择改变，携带值为', e.detail.value)
     this.setData({
@@ -67,39 +65,43 @@ Page({
     })
   },
   onLoad: function () {
-    if (app.globalData.userInfo) {
-      this.setData({
-        userInfo: app.globalData.userInfo,
-        hasUserInfo: true
-      })
-    } else if (this.data.canIUse) {
-      // 由于 getUserInfo 是网络请求，可能会在 Page.onLoad 之后才返回
-      // 所以此处加入 callback 以防止这种情况
-      app.userInfoReadyCallback = res => {
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    } else {
-      // 在没有 open-type=getUserInfo 版本的兼容处理
-      wx.getUserInfo({
-        success: res => {
-          app.globalData.userInfo = res.userInfo
-          this.setData({
-            userInfo: res.userInfo,
-            hasUserInfo: true
-          })
-        }
-      })
-    }
+    //加载数据
+    this.loadData();
+    
+   
   },
-  getUserInfo: function (e) {
-    console.log(e)
-    app.globalData.userInfo = e.detail.userInfo
-    this.setData({
-      userInfo: e.detail.userInfo,
-      hasUserInfo: true
-    })
+
+
+  //下载瀑布流数据
+  loadData: function () {
+    /**
+    * 发送请求数据
+    */
+    var that = this
+
+    var currentDate = this.data.dataListDateCurrent;
+    util.AJAX("news/before/" + currentDate, function (res) {
+      var arr = res.data;
+      var format = util.getFormatDate(arr.date);
+
+      // 格式化日期方便加载指定日期数据
+      // 格式化日期获取星期几方便显示
+      arr["dateDay"] = format.dateDay;
+
+      // 获取当前数据进行保存
+      var list = that.data.datalist;
+      // 然后重新写入数据
+      that.setData({
+        datalist: list.concat(arr),                              // 存储数据
+        dataListDateCurrent: arr.date,
+        dataListDateCount: that.data.dataListDateCount + 1      // 统计加载次数
+      });
+    });
+  },
+
+  //下载图片，打印日志，可以去掉
+  WxMasonryImageLoad: function (e) {
+    var that = this;
+    console.log(e.detail.height);
   }
 })
