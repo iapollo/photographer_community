@@ -5,25 +5,42 @@
   <block wx:else>
     <!-- pd: person detail -->
     <view class="pd-hd">
-      <view class="pd-hd-bg" style="background-image: url('../../images/1.jpg')"></view>
-      <view class="pd-intro">
-        <view class="pd-avatar" style="background-image: url({{personDetail.avatars.medium}})"></view>
-        <view class="pd-name-cn">{{personDetail.name}}</view>
-        <view class="pd-name-en">{{personDetail.name_en}}</view>
-        <view class="pd-address">{{personDetail.born_place}}</view>
-      </view>
+        <view class="pd-hd-bg" style="background-image: url('{{photo}}')"></view>
+        <view class="pd-intro">
+          <view class="pd-avatar" style="background-image: url({{photo}})"></view>
+          <view class="pd-name-cn">{{name}}</view>
+          <view class="pd-name-en">{{name}}</view>
+          <view class="pd-address">{{city}}</view>
+        </view>
     </view>
-    <view class="pd-bd">
+    <!-- <view class="pd-bd"> -->
+    <view class="kind-list">
+            <!-- <block wx:for="{{list}}" wx:key="id"> -->
+                <view class="kind-list__item">
+                    <!-- <view id="{{item.id}}" class="weui-flex kind-list__item-hd {{item.open ? 'kind-list__item-hd_show' : ''}}" bindtap="kindToggle"> -->
+                        <view class="weui-flex__item">优秀作品</view>
+                        <image class="kind-list__img" src="../../images/pic1.png"></image>
+                    </view>
+                    <!-- <view class="kind-list__item-bd {{item.open ? 'kind-list__item-bd_show' : ''}}">
+                        <view class="weui-cells {{item.open ? 'weui-cells_show' : ''}}">
+                            <block wx:for="{{item.pages}}" wx:for-item="page" wx:key="*this">
+                                <navigator url="{{page}}/{{page}}" class="weui-cell weui-cell_access">
+                                    <view class="weui-cell__bd">{{page}}</view>
+                                    <view class="weui-cell__ft weui-cell__ft_in-access"></view>
+                                </navigator>
+                            </block>
+                        </view> -->
+                    <!-- </view> -->
+                <!-- </view> -->
+            <!-- </block> -->
+        <!-- </view> -->
+
+
+
       <view class="pd-work">
-        <block wx:for="{{personDetail.works}}" wx:for-item="psersonWorkItem" wx:key="psersonWorkItem">
-          <view class="pd-work-item" data-id="{{psersonWorkItem.subject.id}}" bindtap="viewFilmDetail">
-            <image class="pd-work-cover" src="{{psersonWorkItem.subject.images.large}}"></image>
-            <view class="pd-work-intro">
-              <view class="pd-work-title">{{psersonWorkItem.subject.title}}</view>
-              <view class="pd-work-roles">担任：{{psersonWorkItem.roles}}</view>
-            </view>
-          </view>
-        </block>
+         <block wx:for="{{worksList}}" wx:for-item="psersonWorkItem" wx:key="psersonWorkItem"> 
+            <image class="pd-work-cover" src="{{psersonWorkItem}}"></image>
+         </block> 
       </view>
     </view>
   </block>

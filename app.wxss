@@ -1,5 +1,62 @@
 /**app.wxss**/
 @import 'weui.wxss';
+
+/* 最终使用的样式 */
+text_show_box {
+    background-color: #F8F8F8;
+    font-size: 16rpx;
+    font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
+    padding: 40rpx;
+}
+.text_show_title {
+    margin-top: 5rpx;
+    text-align: center;
+    font-size: 45rpx;
+    font-weight: 400;
+}
+.text_show_desc {
+    margin-top: 5rpx;
+    color: #888888;
+    text-align: center;
+    font-size: 32rpx;
+    margin-bottom: 5rpx;
+}
+
+/* weui app.wxss */
+page{
+    background-color: #F8F8F8;
+    font-size: 16px;
+    font-family: -apple-system-font,Helvetica Neue,Helvetica,sans-serif;
+}
+.page__hd {
+    padding: 40px;
+}
+.page__bd {
+    padding-bottom: 40px;
+}
+.page__bd_spacing {
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.page__ft{
+    padding-bottom: 10px;
+    text-align: center;
+}
+
+.page__title {
+    text-align: left;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.page__desc {
+    margin-top: 5px;
+    color: #888888;
+    text-align: left;
+    font-size: 14px;
+}
+
 /* .container {
   height: 100%;
   display: flex;
@@ -10,14 +67,16 @@
   box-sizing: border-box;
 }  */
 
-page{
+
+
+/* page{
 	height: 100%;
 	color: #333;
   	display: flex;
   	flex-direction: column;
  	font-family:;
  	font: normal 30rpx/1.68 -apple-system-font, 'Helvetica Neue', Helvetica, 'Microsoft YaHei', sans-serif;
-}
+} */
 .container {
 	flex: 1;
   	display: flex;

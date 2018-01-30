@@ -2,6 +2,11 @@
 <import src='../template/template.wxml' />
 
 <view class="page">
+  <!-- <view class="page__hd">
+    <view style="background-image: url='../../image/3.jpg'"></view>
+    <view class="page__title">禧程</view>
+    <view class="page__desc">面向期望到全球各地旅行拍照的朋友</view>
+  </view> -->
   <view class='page__bd'>
     <!--swiper-->
     <swiper class="swiper" indicator-dots="{{indicatorDot}}" autoplay="{{autoplay}}" interval="{{interval}}" duration="{{duration}}">
@@ -11,6 +16,13 @@
         </swiper-item>
       </block>
     </swiper>
+
+    <!--简介-->
+    <view class='text_show_box'>
+      <view class='text_show_title'>禧程</view>
+      <view class='text_show_desc'>面向期望到全球各地旅行拍照的朋友</view>
+    </view>
+
     <!--grids-->
     <view class="weui-grids">
       <block wx:for="{{grids}}" wx:key="name">
@@ -50,8 +62,10 @@
       </picker>
     </view> -->
 
+
+
     <!--瀑布流-->
-    <view class="WxMasonryTitle">推荐城市</view>
+    <!-- <view class="WxMasonryTitle">城市</view> -->
     <view class="hot-box-main WxMasonryView">
       <block wx:for="{{datalist}}" wx:for-item="item" wx:for-index="i" wx:key="">
         <view class="hot-box-top">
@@ -65,6 +79,55 @@
           </navigator>
         </view>
       </block>
+    </view>
+
+    <!--瀑布流-new-->
+    <view class="WxMasonryTitle">城市</view>
+    <view class="hot-box-main WxMasonryView">
+      <!-- <block wx:for="{{datalist}}" wx:for-item="item" wx:for-index="i" wx:key=""> -->
+        <view class="hot-box-top">
+          <text class="hot-box-title">{{cityDescription}}</text>
+        </view>
+        <view class="WxMasonry" wx:for="{{cityList}}" wx:for-index="j" wx:for-item="items" wx:key="">
+          <!-- <navigator id="{{datalist[i].stories[j].id}}" url="../detail/detail?id={{datalist[i].stories[j].id}}"> -->
+          <!-- <navigator id='{{items.id}}' url='../photographer/photographer'> -->
+             <image class="WxMasonryImage" id="{{items.id}}" mode="aspectFill" bindload="WxMasonryImageLoad" src="{{cityList[j].images[0]}}" /> 
+            <view class="list-box-title">{{cityList[j].title}}</view>
+          <!-- </navigator> -->
+        </view>
+      <!-- </block> -->
+    </view>
+
+    <view class="WxMasonryTitle">摄影师</view>
+    <view class="hot-box-main WxMasonryView">
+      <!-- <block wx:for="{{datalist}}" wx:for-item="item" wx:for-index="i" wx:key=""> -->
+        <view class="hot-box-top">
+          <text class="hot-box-title">{{cityDescription}}</text>
+        </view>
+        <view class="WxMasonry" wx:for="{{cityList}}" wx:for-index="j" wx:for-item="items" wx:key="">
+          <!-- <navigator id="{{datalist[i].stories[j].id}}" url="../detail/detail?id={{datalist[i].stories[j].id}}"> -->
+           <navigator id='{{items.id}}' url='../photographer/photographer?id={{items.id}}'> 
+             <image class="WxMasonryImage" id="{{items.id}}" mode="aspectFill" bindload="WxMasonryImageLoad" src="{{cityList[j].images[0]}}" /> 
+            <view class="list-box-title">{{cityList[j].title}}</view>
+           </navigator> 
+        </view>
+      <!-- </block> -->
+    </view>
+
+    <view class="WxMasonryTitle">服务商</view>
+    <view class="hot-box-main WxMasonryView">
+      <!-- <block wx:for="{{datalist}}" wx:for-item="item" wx:for-index="i" wx:key=""> -->
+        <view class="hot-box-top">
+          <text class="hot-box-title">{{cityDescription}}</text>
+        </view>
+        <view class="WxMasonry" wx:for="{{cityList}}" wx:for-index="j" wx:for-item="items" wx:key="">
+          <!-- <navigator id="{{datalist[i].stories[j].id}}" url="../detail/detail?id={{datalist[i].stories[j].id}}"> -->
+          <!-- <navigator id='{{items.id}}' url='../photographer/photographer'> -->
+             <image class="WxMasonryImage" id="{{items.id}}" mode="aspectFill" bindload="WxMasonryImageLoad" src="{{cityList[j].images[0]}}" /> 
+            <view class="list-box-title">{{cityList[j].title}}</view>
+          <!-- </navigator> -->
+        </view>
+      <!-- </block> -->
     </view>
 
     <!--footer-->

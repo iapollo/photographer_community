@@ -1,20 +1,52 @@
 // pages/photographer/photographer.js
+const util = require('../../utils/util.js');
 Page({
-
   /**
    * 页面的初始数据
    */
   data: {
-    personDetail:[
-      { avatars:{medium:'../../images/2.jpg'}, name: 'photographer1', name_en: 'p1', born_place:'beijing' }
-    ]
+    name:{},
+    city:{},
+    photo:{},
+    worksList:[]
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
-  
+    // 页面初始化 options 为页面跳转所带来的参数
+    var that = this
+    var id = options.id;
+    console.log(options.id);
+
+    // 请求内容数据
+    util.AJAX("news/" + id, function (res) {
+      // var arr = res.data;
+      var arr = {
+        'name':"name1",
+        'city':"china.beijing",
+        'photo':"../../images/name1.jpg",
+        'works':[
+          // { 'url': "../../images/beijing.jpg" },
+          // { 'url': '../../images/beijing.jpg' },
+          // { 'url': '../../images/beijing.jpg' }
+          '../../images/beijing.jpg',
+          '../../images/beijing1.jpg',
+          '../../images/shanghai.jpg',
+          '../../images/shanghai1.jpg',
+          '../../images/guangzhou.jpg'
+        ]
+      };
+ 
+      // 重新写入数据
+      that.setData({
+        name: arr.name,
+        city: arr.city,
+        photo: arr.photo,
+        worksList: arr.works
+      });
+    });
   },
 
   /**

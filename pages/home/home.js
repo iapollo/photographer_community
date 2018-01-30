@@ -7,9 +7,10 @@ Page({
   data: {
     //轮播图
     imgUrls: [
-      { url: '../../images/1.jpg' },
-      { url: '../../images/2.jpg' },
-      { url: '../../images/3.jpg' }
+      { url: '../../images/beijing1.jpg' },
+      { url: '../../images/shanghai.jpg' },
+      { url: '../../images/guangzhou1.jpg' },
+      { url: '../../images/shenzhen1.jpg' }
     ],
     indicatorDot: true,
     autoplay: true,
@@ -47,7 +48,12 @@ Page({
     datalist: [],
     dataListDateCurrent: 20180106,      // 当前日期current
     dataListDateCount: 0,
-    imagesHeightList: []
+    imagesHeightList: [],
+
+    //瀑布流 liujch add
+    cityDescription:"",
+    cityList:[]
+
   },
 
 
@@ -81,21 +87,66 @@ Page({
 
     var currentDate = this.data.dataListDateCurrent;
     util.AJAX("news/before/" + currentDate, function (res) {
-      var arr = res.data;
-      var format = util.getFormatDate(arr.date);
+      // var arr = res.data;
+      //liujch add
+      var arr = {
+        'description':"选定旅行目的地，选择当地的摄影师，省去摄影师昂贵的机票和酒店费用，把钱花到享受异国风情上吧",
+        'cities':[
+          {
+            'title': "北京是一个古老的城市",
+            'id':'1',
+            'images':[
+              '../../images/beijing.jpg',
+              '../../images/beijing1.jpg'
+            ]
+          },
+          {
+            'title': "上海是一个时尚的城市",
+            'id':'2',
+            'images': [
+              '../../images/shanghai.jpg',
+              '../../images/shanghai1.jpg'
+            ]
+          },
+          {
+            'title': "广州是一个时尚的城市",
+            'id': '3',
+            'images': [
+              '../../images/guangzhou.jpg',
+              '../../images/guangzhou1.jpg'
+            ]
+          },
+          {
+            'title': "深圳是一个时尚的城市",
+            'id': '4',
+            'images': [
+              '../../images/shenzhen.jpg',
+              '../../images/shenzhen1.jpg'
+            ]
+          }
+        ]
+      };
 
-      // 格式化日期方便加载指定日期数据
-      // 格式化日期获取星期几方便显示
-      arr["dateDay"] = format.dateDay;
-
-      // 获取当前数据进行保存
-      var list = that.data.datalist;
       // 然后重新写入数据
       that.setData({
-        datalist: list.concat(arr),                              // 存储数据
-        dataListDateCurrent: arr.date,
-        dataListDateCount: that.data.dataListDateCount + 1      // 统计加载次数
+        cityDescription: arr.description,                       // 存储数据
+        cityList: arr.cities
       });
+
+      // var format = util.getFormatDate(arr.date);
+
+      // // 格式化日期方便加载指定日期数据
+      // // 格式化日期获取星期几方便显示
+      // arr["dateDay"] = format.dateDay;
+
+      // // 获取当前数据进行保存
+      // var list = that.data.datalist;
+      // // 然后重新写入数据
+      // that.setData({
+      //   datalist: list.concat(arr),                              // 存储数据
+      //   dataListDateCurrent: arr.date,
+      //   dataListDateCount: that.data.dataListDateCount + 1      // 统计加载次数
+      // });
     });
   },
 
