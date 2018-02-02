@@ -1,0 +1,20 @@
+<!--cities.wxml-->
+<view class="page">
+  <view class="page__hd">
+    <view class="page__title">禧程</view>
+    <view class="page__desc">面向期望到全球各地旅行拍照的朋友</view>
+  </view>
+
+  <!-- 详细信息 -->
+  <!-- <view class='page__hd'> -->
+  <view class="pd-hd">
+    <view class="pd-hd-bg" style="background-image: url('../../images/beijing.jpg')"></view>
+    <view class="pd-intro">
+      <!-- <view class="pd-avatar" style="background-image: url('../../images/beijing.jpg')"></view> -->
+      <view class="pd-name-cn">{{name}}</view>
+      <view class="pd-name-en">{{name}}</view>
+      <view class="pd-address">{{city}}</view>
+    </view>
+  </view>
+  <!-- </view> -->
+</view>

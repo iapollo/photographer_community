@@ -1,10 +1,12 @@
 {
   "pages":[
     "pages/home/home",
+    "pages/city/cities",
+    "pages/photographer/details/photographer",
+    "pages/city/details/city",
     "pages/index/index",
     "pages/article/article",
     "pages/product/product",
-    "pages/photographer/photographer",
     "pages/conference/conference"
   ],
   "window":{

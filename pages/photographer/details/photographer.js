@@ -1,11 +1,12 @@
 // pages/photographer/photographer.js
-const util = require('../../utils/util.js');
+const util = require('../../../utils/util.js');
 Page({
   /**
    * 页面的初始数据
    */
   data: {
     name:{},
+    description:{},
     city:{},
     photo:{},
     worksList:[]
@@ -24,24 +25,23 @@ Page({
     util.AJAX("news/" + id, function (res) {
       // var arr = res.data;
       var arr = {
-        'name':"name1",
+        'name':"摄影师A",
+        'description':"资深摄影师，曾多次获得摄影奖项",
         'city':"china.beijing",
-        'photo':"../../images/name1.jpg",
+        'photo':"../../../images/name1.jpg",
         'works':[
-          // { 'url': "../../images/beijing.jpg" },
-          // { 'url': '../../images/beijing.jpg' },
-          // { 'url': '../../images/beijing.jpg' }
-          '../../images/beijing.jpg',
-          '../../images/beijing1.jpg',
-          '../../images/shanghai.jpg',
-          '../../images/shanghai1.jpg',
-          '../../images/guangzhou.jpg'
+          '../../../images/beijing.jpg',
+          '../../../images/beijing1.jpg',
+          '../../../images/shanghai.jpg',
+          '../../../images/shanghai1.jpg',
+          '../../../images/guangzhou.jpg'
         ]
       };
  
       // 重新写入数据
       that.setData({
         name: arr.name,
+        description:arr.description,
         city: arr.city,
         photo: arr.photo,
         worksList: arr.works

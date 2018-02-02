@@ -1,0 +1,31 @@
+<view class="container">
+  <block wx:if="{{showLoading}}">
+    <view class="loading">玩命加载中…</view>
+  </block>
+  <block wx:else>
+    <!-- 详细信息 -->
+    <view class="pd-hd">
+      <view class="pd-hd-bg" style="background-image: url('{{photo}}')"></view>
+      <view class="pd-intro">
+        <view class="pd-avatar" style="background-image: url({{photo}})"></view>
+        <view class="pd-name-cn">{{name}}</view>
+        <view class="pd-name-en">{{name}}</view>
+        <view class="pd-address">{{city}}</view>
+      </view>
+    </view>
+
+    <!--简介-->
+    <view class='text_show_box'>
+      <view class='text_show_title'>{{name}}</view>
+      <view class='text_show_desc'>{{description}}</view>
+    </view>
+
+    <!--作品展示-->
+    <view class="WxMasonryTitle">优秀作品</view>
+    <view class="hot-box-main WxMasonryView">
+      <block class="WxMasonry" wx:for="{{worksList}}" wx:key="">
+        <image class="WxMasonryImage" mode="aspectFill" src="{{item}}" />
+      </block>
+    </view>
+  </block>
+</view>

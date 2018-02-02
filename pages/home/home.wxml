@@ -26,7 +26,7 @@
     <!--grids-->
     <view class="weui-grids">
       <block wx:for="{{grids}}" wx:key="name">
-        <navigator url="../{{item.url}}/{{item.url}}" class="weui-grid" hover-class="weui-grid_active">
+        <navigator url="../city/{{item.url}}" class="weui-grid" hover-class="weui-grid_active">
           <view>
             <image class="weui-grid__icon" src='{{item.icon}}' mode="scaleToFill"></image>
           </view>
@@ -73,7 +73,7 @@
         </view>
         <view class="WxMasonry" wx:for="{{datalist[i].stories}}" wx:for-index="j" wx:for-item="items" wx:key="">
           <!-- <navigator id="{{datalist[i].stories[j].id}}" url="../detail/detail?id={{datalist[i].stories[j].id}}"> -->
-          <navigator id='{{datalist[i].stories[j].id}}' url='../photographer/photographer'>
+          <navigator id='{{datalist[i].stories[j].id}}' url='../photographer/details/photographer'>
             <image class="WxMasonryImage" id="{{i*10+j}}" style="width:{{imagesHeightList[i*10+j].width}}px;height:{{imagesHeightList[i*10+j].height}}px" mode="aspectFill" bindload="WxMasonryImageLoad" src="{{datalist[i].stories[j].images[0]}}" />
             <view class="list-box-title">{{datalist[i].stories[j].title}}</view>
           </navigator>
@@ -90,10 +90,10 @@
         </view>
         <view class="WxMasonry" wx:for="{{cityList}}" wx:for-index="j" wx:for-item="items" wx:key="">
           <!-- <navigator id="{{datalist[i].stories[j].id}}" url="../detail/detail?id={{datalist[i].stories[j].id}}"> -->
-          <!-- <navigator id='{{items.id}}' url='../photographer/photographer'> -->
+           <navigator id='{{items.id}}' url='../city/details/city?id={{items.id}}'> 
              <image class="WxMasonryImage" id="{{items.id}}" mode="aspectFill" bindload="WxMasonryImageLoad" src="{{cityList[j].images[0]}}" /> 
             <view class="list-box-title">{{cityList[j].title}}</view>
-          <!-- </navigator> -->
+           </navigator> 
         </view>
       <!-- </block> -->
     </view>
@@ -105,8 +105,7 @@
           <text class="hot-box-title">{{cityDescription}}</text>
         </view>
         <view class="WxMasonry" wx:for="{{cityList}}" wx:for-index="j" wx:for-item="items" wx:key="">
-          <!-- <navigator id="{{datalist[i].stories[j].id}}" url="../detail/detail?id={{datalist[i].stories[j].id}}"> -->
-           <navigator id='{{items.id}}' url='../photographer/photographer?id={{items.id}}'> 
+           <navigator id='{{items.id}}' url='../photographer/details/photographer?id={{items.id}}'> 
              <image class="WxMasonryImage" id="{{items.id}}" mode="aspectFill" bindload="WxMasonryImageLoad" src="{{cityList[j].images[0]}}" /> 
             <view class="list-box-title">{{cityList[j].title}}</view>
            </navigator> 

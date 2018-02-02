@@ -1,0 +1,61 @@
+<view class="container">
+  <block wx:if="{{showLoading}}">
+    <view class="loading">玩命加载中…</view>
+  </block>
+  <block wx:else>
+    <!-- 详细信息 -->
+    <view class="pd-hd">
+      <view class="pd-hd-bg" style="background-image: url('{{photo}}')"></view>
+      <view class="pd-intro">
+        <view class="pd-avatar" style="background-image: url({{photo}})"></view>
+        <view class="pd-name-cn">{{name}}</view>
+        <!-- <view class="pd-name-en">{{name}}</view>
+        <view class="pd-address">{{city}}</view> -->
+      </view>
+    </view>
+
+    <!--简介-->
+    <view class='text_show_box'>
+      <view class='text_show_title'>{{name}}</view>
+      <view class='text_show_desc'>{{description}}</view>
+    </view>
+
+    <!--摄影师展示-->
+    <view class="fd-bd">
+      <view class="fd-bd-title">推荐理由</view>
+      <view class="fd-bd-intro">{{description}}</view>
+      <view class="fd-bd-title">优秀摄影师</view>
+      <view class="fd-bd-person">
+        <view class="fd-bd-person-item" data-id="1" bindtap="viewPersonDetail">
+          <image class="fd-bd-person-avatar" src="{{worksList[0]}}"></image>
+          <view class="fd-bd-person-name">{{name}}</view>
+          <view class="fd-bd-person-role">导演</view>
+        </view>
+        <block wx:for="{{worksList}}" wx:for-item="filmDetailCastItem" wx:key="filmDetailCastItem">
+          <view class="fd-bd-person-item" data-id="{{2}}" bindtap="viewPersonDetail">
+            <image class="fd-bd-person-avatar" src="{{filmDetailCastItem}}"></image>
+            <view class="fd-bd-person-name">{{name}}</view>
+            <view class="fd-bd-person-role">演员</view>
+          </view>
+        </block>
+      </view>
+      
+      <!--服务商展示-->
+      <view class="fd-bd-title">优秀服务商</view>
+      <view class="fd-bd-person">
+        <view class="fd-bd-person-item" data-id="1" bindtap="viewPersonDetail">
+          <image class="fd-bd-person-avatar" src="{{worksList[0]}}"></image>
+          <view class="fd-bd-person-name">{{name}}</view>
+          <view class="fd-bd-person-role">导演</view>
+        </view>
+        <block wx:for="{{worksList}}" wx:for-item="filmDetailCastItem" wx:key="filmDetailCastItem">
+          <view class="fd-bd-person-item" data-id="{{2}}" bindtap="viewPersonDetail">
+            <image class="fd-bd-person-avatar" src="{{filmDetailCastItem}}"></image>
+            <view class="fd-bd-person-name">{{name}}</view>
+            <view class="fd-bd-person-role">演员</view>
+          </view>
+        </block>
+      </view>
+    </view>
+  </block>
+</view>
