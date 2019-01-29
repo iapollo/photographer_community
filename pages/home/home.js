@@ -19,7 +19,7 @@ Page({
     imgWidth: wx.getSystemInfoSync().windowWidth,
     //九宫格
     grids:[
-      { text: '优秀作品', icon: '../../images/pic1.png', url: 'cities'},
+      { text: '推荐城市', icon: '../../images/destination.png', url: 'cities'},
       { text: '优秀摄影师', icon: '../../images/photographer.png', url: 'index' },
       { text: '优秀服务商', icon: '../../images/provider1.png', url: 'index' },
 

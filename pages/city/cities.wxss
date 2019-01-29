@@ -1,3 +1,75 @@
+/**cities.wxss**/
+
+/* 使用的样式 */
+
+
+.list-show-box {
+    padding: 40rpx ;
+}
+
+.list-show-title {
+    text-align: left;
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.list-show-desc {
+    margin-top: 5px;
+    color: #888888;
+    text-align: left;
+    font-size: 14px;
+}
+
+.list-show-body {
+    position: relative;
+    width: 100%;
+    height: 400rpx;
+    overflow: hidden;
+}
+
+.list-show-bd-bg {
+    position: absolute;
+    z-index: 0;
+    width: 100%;
+    height: 400rpx;
+    background-repeat: no-repeat;
+    background-position: center top;
+    background-size: cover;
+    filter: brightness(80%);
+    display: inline-block;
+}
+
+.list-show-item-desc {
+    position: absolute;
+    z-index: 6;
+    display: flex;
+    width: 100%;
+    height: 600rpx;
+    justify-content: center;
+    flex-direction: column;
+    align-items: flex-start;
+    color: #fff;   
+}
+
+.list-show-item-name {
+    padding: 10rpx 30rpx; 
+    margin-top: 30rpx; 
+    background-color: rgba(0, 0, 0, .1);
+    border-radius: 32rpx; 
+    font-size: 32rpx;
+    box-shadow: 0 0 20rpx rgba(0, 0, 0, .2) inset,1px 1px 0 rgba(255, 255, 255, .1); 
+}
+
+.list-show-item-enname {
+    margin-top: 10rpx;
+    font-size: 24rpx;
+}
+
+.list-show-item-addr {
+    margin-top: 20rpx;
+    font-size: 24rpx;
+}
+
 /* .fd-hd {
     position: relative;
     width: 100%;
@@ -149,12 +221,15 @@
     color: #999
 } */
 
+.pd-hd-head {
+    padding: 40rpx ;
+}
+
 .pd-hd {
     position: relative;
     width: 100%;
     height: 400rpx;
     overflow: hidden;
-    padding: 40rpx 40rpx;
 }
 
 .pd-hd-bg {
